@@ -8,15 +8,29 @@
 </head>
 <body>
     <div id="app">
-        <h2 v-html="link"></h2>
-          
+        <h2>Счетчик = {{ counter }} </h2>
+        <button v-on:click="riseCounter">Увеличить</button>
+
+        </hr>
+
+        <h2 v-on:mouseover="onHover">Второй счетчик = {{ counterSec }}</h2>
+        <button v-on:click="counterSec++">Увеличить</button>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
     <script>
         new Vue({
             el: "#app",
             data: {
-                link: '<a href="https://google.com">Google</a>'
+                counter: 0,
+                counterSec: 0
+            },
+            methods: {
+                riseCounter: function() {
+                    this.counter++
+                },
+                onHover: function(event) {
+                    event.target.style.color = 'red'
+                }
             }
         })
     </script>
