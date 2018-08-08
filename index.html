@@ -16,6 +16,8 @@
             X: {{ x }} / Y: {{ y }}
             <span v-on:mousemove.stop>Не изменять</span>
         </h2>
+        </hr>
+        <input type="text" v-on:keyup.space.enter="alertValue">
     </div>
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
     <script>
@@ -29,6 +31,9 @@
                 handleMouseMove: function(event) {
                     this.x = event.clientX
                     this.y = event.clientY
+                },
+                alertValue: function(event) {
+                    alert(event.target.value)
                 }
             }
         })
