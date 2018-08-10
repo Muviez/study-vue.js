@@ -22,30 +22,25 @@
 </head>
 <body>
     <div id="app">
+        <template v-if="isVisible">
+            <h1>Post First</h1>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aut debitis labore voluptas deserunt enim. Dolor, odio? Est debitis neque ipsum.</p>
+        </template>
 
-        <div class="circle" :style="circleClasses"></div>
-        <div class="circle" :style="[circleClasses, {'width': height + 'px'}]"></div>
+        <template v-if="!isVisible">
+            <h1>Post Second</h1>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet dolor fugit amet quasi eaque officia aperiam numquam! Iure esse aliquam veritatis beatae earum magnam aut labore veniam quo delectus placeat, nulla officia a ad perferendis vel corporis aperiam iusto repudiandae dignissimos harum. Animi eos quisquam asperiores quae aperiam! Id maxime vero tempore repellendus dignissimos adipisci illum, recusandae excepturi asperiores commodi distinctio doloribus, placeat velit sunt ab incidunt architecto! Rem non ex officiis quod sit veniam, error voluptatibus maxime aliquam dolor. Enim facere alias itaque doloribus, eveniet pariatur dolore, repellat fugit unde perspiciatis et in repudiandae. Assumenda porro pariatur adipisci veritatis.</p>
+        </template>
 
-        <hr>
-
-        <input type="text" v-model = "color">
-        <input type="text" v-model = "height">
+        <button @click="isVisible = !isVisible">Поменять статью</button>
+        
     </div>
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
     <script>
         new Vue({
             el: "#app",
             data: {
-                color: 'blue',
-                height: 100
-            },
-            computed: {
-                circleClasses: function() {
-                    return {
-                        'background': this.color,
-                        'height': this.height + 'px'
-                    }
-                }
+                isVisible: true
             }
         })
     </script>
