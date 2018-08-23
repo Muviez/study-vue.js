@@ -23,39 +23,39 @@
 <body>
     <div id="app">
 
-        <h2>Counter: {{ counterFst }} / {{ counterSec }}</h2>
-        <h2>Result: {{ result }}</h2>
+        <h2>{{ title }}</h2>
+        <h3>{{ newField }}</h3>
 
-        <button @click='add'>Add</button>
-        <button @click='sub'>Sub</button>
-        <button @click='counterSec++'>Add counterSec</button>
+        
+        <button @click="title= 'Update: Hello i am new vue app'">Update title</button>
+
+    </div>
+    <div id="app2">
+
+        <h2>{{ title }}</h2>
+        <button @click="updateFirstTitle">Update title</button>
 
     </div>
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
     <script>
-        new Vue({
+        let vue1 = new Vue({
             el: "#app",
             data: {
-                counterFst: 0,
-                counterSec: 0
+                title: 'Hello i am vue app'
+            }
+        })
+
+        vue1.newField = 'Random text'
+
+        new Vue({
+            el: '#app2',
+            data: {
+                title: 'Hello i am vue app 2'
             },
             methods: {
-                add: function() {
-                    this.counterFst++
-                },
-                sub: function() {
-                    this.counterFst--
-                }
-            },
-            computed: {
-                result: function() {
-                    console.log('result was called')
-                    return this.counterFst > 3 ? 'More than 3' : 'Less than 3'
-                }
-            },
-            watch: {
-                counterFst: function(val) {
-                    return console.log(val)
+                updateFirstTitle: function() {
+                    vue1.title = "Update from second app"
+                    vue1.newField = "New newField!"
                 }
             }
         })
