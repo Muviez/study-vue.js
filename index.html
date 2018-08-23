@@ -22,25 +22,34 @@
 </head>
 <body>
     <div id="app">
-        <template v-if="isVisible">
-            <h1>Post First</h1>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aut debitis labore voluptas deserunt enim. Dolor, odio? Est debitis neque ipsum.</p>
-        </template>
 
-        <template v-if="!isVisible">
-            <h1>Post Second</h1>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet dolor fugit amet quasi eaque officia aperiam numquam! Iure esse aliquam veritatis beatae earum magnam aut labore veniam quo delectus placeat, nulla officia a ad perferendis vel corporis aperiam iusto repudiandae dignissimos harum. Animi eos quisquam asperiores quae aperiam! Id maxime vero tempore repellendus dignissimos adipisci illum, recusandae excepturi asperiores commodi distinctio doloribus, placeat velit sunt ab incidunt architecto! Rem non ex officiis quod sit veniam, error voluptatibus maxime aliquam dolor. Enim facere alias itaque doloribus, eveniet pariatur dolore, repellat fugit unde perspiciatis et in repudiandae. Assumenda porro pariatur adipisci veritatis.</p>
-        </template>
+        <ul>
+            <li v-for="(person, index) in people">Index: {{ index + 1 }} / Name: {{ person.name }} / Age: {{ person.age }}</li>
+        </ul>
 
-        <button @click="isVisible = !isVisible">Поменять статью</button>
-        
+        </hr>
+
+        <ul>
+            <li v-for="(value, key) in person"><b>{{ key }}</b>: {{ value }}</li>
+        </ul>
+
     </div>
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
     <script>
         new Vue({
             el: "#app",
             data: {
-                isVisible: true
+                people: [
+                    {name: 'Egor', age: 18},
+                    {name: 'Andrew', age: 20},
+                    {name: 'Kirill', age: 22},
+                    {name: 'Ivan', age: 24}
+                ],
+                person: {
+                    name: 'Anton',
+                    age: 25,
+                    job: 'Full-stack developer'
+                }
             }
         })
     </script>
