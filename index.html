@@ -52,6 +52,11 @@
                     console.log('result was called')
                     return this.counterFst > 3 ? 'More than 3' : 'Less than 3'
                 }
+            },
+            watch: {
+                counterFst: function(val) {
+                    return console.log(val)
+                }
             }
         })
     </script>
