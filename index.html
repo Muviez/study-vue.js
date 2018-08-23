@@ -23,15 +23,12 @@
 <body>
     <div id="app">
 
-        <ul>
-            <li v-for="(person, index) in people">Index: {{ index + 1 }} / Name: {{ person.name }} / Age: {{ person.age }}</li>
-        </ul>
+        <h2>Counter: {{ counterFst }} / {{ counterSec }}</h2>
+        <h2>Result: {{ result }}</h2>
 
-        </hr>
-
-        <ul>
-            <li v-for="(value, key) in person"><b>{{ key }}</b>: {{ value }}</li>
-        </ul>
+        <button @click='add'>Add</button>
+        <button @click='sub'>Sub</button>
+        <button @click='counterSec++'>Add counterSec</button>
 
     </div>
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
@@ -39,16 +36,21 @@
         new Vue({
             el: "#app",
             data: {
-                people: [
-                    {name: 'Egor', age: 18},
-                    {name: 'Andrew', age: 20},
-                    {name: 'Kirill', age: 22},
-                    {name: 'Ivan', age: 24}
-                ],
-                person: {
-                    name: 'Anton',
-                    age: 25,
-                    job: 'Full-stack developer'
+                counterFst: 0,
+                counterSec: 0
+            },
+            methods: {
+                add: function() {
+                    this.counterFst++
+                },
+                sub: function() {
+                    this.counterFst--
+                }
+            },
+            computed: {
+                result: function() {
+                    console.log('result was called')
+                    return this.counterFst > 3 ? 'More than 3' : 'Less than 3'
                 }
             }
         })
